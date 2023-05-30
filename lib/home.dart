@@ -85,6 +85,7 @@ class _HomeState extends State<Home> {
               value: loanAmount,
               activeColor: const Color(0xFFBB868F),
               inactiveColor: const Color(0xFFF3F6FB),
+              // divisions: 10,
               onChanged: (value) {
                 setState(
                   () {
@@ -92,9 +93,13 @@ class _HomeState extends State<Home> {
                   },
                 );
                 emiCalculation();
+                // debugPrint("$value");
               },
             ),
-            userValue(title: "Loan Amount", value: "₹ ${loanAmount.round()}"),
+            userValue(
+              title: "Loan Amount",
+              value: "₹ ${loanAmount.round()}",
+            ),
             Slider(
               min: 11,
               max: 22,
@@ -111,8 +116,9 @@ class _HomeState extends State<Home> {
               },
             ),
             userValue(
-                title: "Rate of interest",
-                value: "${rateOfInterest.round()} %"),
+              title: "Rate of interest",
+              value: "${rateOfInterest.round()} %",
+            ),
             Slider(
               min: 12,
               max: 24,
@@ -129,7 +135,9 @@ class _HomeState extends State<Home> {
               },
             ),
             userValue(
-                title: "Loan tenure", value: "${loanTenure.round()} Months"),
+              title: "Loan tenure",
+              value: "${loanTenure.round()} Months",
+            ),
             Padding(
               padding: const EdgeInsets.only(
                 top: 40,
@@ -243,7 +251,7 @@ class _HomeState extends State<Home> {
                   ),
                 ),
                 Text(
-                  "₹ ${loanAmount.round() + totalInterest!.round()}",
+                  "₹ ${(loanAmount + totalInterest!).round()}",
                   style: const TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.w700,
